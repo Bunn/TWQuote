@@ -16,6 +16,13 @@ struct PaymentOption: Codable {
     let targetAmount: Decimal
 }
 
+enum TWCurrency: String {
+    case BRL = "BRL"
+    case EUR = "EUR"
+    case USD = "USD"
+    case GBP = "GBP"
+}
+
 
 struct TWService {
     let authorizationHeaderValue = "dad99d7d8e52c2c8aaf9fda788d8acdc"

@@ -84,7 +84,7 @@
 			children = (
 				31C4F2DA2280B8F8009BD15B /* AppDelegate */,
 				31C4F2D92280B8EF009BD15B /* Menu */,
-				31C4F2DC2280B90C009BD15B /* Constants */,
+				31C4F2DC2280B90C009BD15B /* Helpers */,
 				31C4F2DB2280B902009BD15B /* Service */,
 				31C4F2DE2280B98F009BD15B /* Supporting Files */,
 			);
@@ -125,12 +125,12 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		31C4F2DC2280B90C009BD15B /* Constants */ = {
+		31C4F2DC2280B90C009BD15B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				31F31E54227DCA2200B0FF04 /* Constants.swift */,
 			);
-			path = Constants;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		31C4F2DE2280B98F009BD15B /* Supporting Files */ = {

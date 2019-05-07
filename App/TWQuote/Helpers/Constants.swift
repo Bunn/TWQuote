@@ -15,10 +15,3 @@ struct UIConstants {
         static let menuErrorLabel = NSLocalizedString("Error", comment: "Error menu Label")
     }
 }
-
-enum TWCurrency: String {
-    case BRL = "BRL"
-    case EUR = "EUR"
-    case USD = "USD"
-    case GBP = "GBP"
-}
