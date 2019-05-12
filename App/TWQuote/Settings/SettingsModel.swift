@@ -41,16 +41,9 @@ class SettingsModel: NSObject, NSCoding {
         guard let data = UserDefaults.standard.object(forKey: Constants.strings.userDefaultKey) as? Data else {
             return SettingsModel()
         }
-        do {
-            if let settings = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? SettingsModel {
-                return settings
-            } else {
-                return SettingsModel()
-            }
-        } catch {
-            print("Error \(error)")
-            return SettingsModel()
-        }
+        
+        let settings = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? SettingsModel
+        return settings ?? SettingsModel()
     }
     
     public func save() {
