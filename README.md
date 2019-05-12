@@ -9,6 +9,8 @@ You can download an unsigned version of the app [here](https://github.com/Bunn/T
 
 # Screenshots
 ![screenshot](./Images/menu_example.png)
+
 ![screenshot](./Images/menu_example_panel.png)
+
 ![screenshot](./Images/menu_example_settings.png)
 
