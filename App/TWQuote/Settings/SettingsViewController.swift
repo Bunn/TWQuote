@@ -20,7 +20,7 @@ class OnlyIntegerValueFormatter: NumberFormatter {
 
 class SettingsViewController: NSViewController {
     public weak var delegate: SettingsViewControllerDelegate?
-    private let settingsModel = SettingsModel()
+    private let settingsModel = SettingsModel.restore()
     @IBOutlet private weak var sourceCurrencyComboBox: NSComboBox!
     @IBOutlet private weak var targetCurrencyComboBox: NSComboBox!
     @IBOutlet private weak var valueTextField: NSTextField!
