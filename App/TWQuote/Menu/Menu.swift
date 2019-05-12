@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-class Menu {
+class Menu: NSObject {
     private let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     private var windowController: NSWindowController?
     private var progressIndicator = NSProgressIndicator()
@@ -77,6 +77,7 @@ class Menu {
         settings.delegate = self
         if windowController == nil {
             let window = NSWindow(contentViewController: settings)
+            window.delegate = self
             windowController = NSWindowController(window: window)
         }
         windowController?.showWindow(self)
@@ -92,11 +93,18 @@ class Menu {
     }
 }
 
+extension Menu: NSWindowDelegate {
+    
+    func windowWillClose(_ notification: Notification) {
+        windowController = nil
+    }
+}
 
 extension Menu: SettingsViewControllerDelegate {
     
     func didSave(controller: SettingsViewController) {
         windowController?.close()
+        windowController = nil
         updateData()
     }
 }
