@@ -16,9 +16,11 @@ class MenuViewModel {
     }()
     
     
-    func fetchQuote(sourceCurrency: TWCurrency, targetCurrency: TWCurrency, amount: Int, completion: @escaping (String?) -> ()) {
-        numberFormatter.currencyCode = targetCurrency.rawValue
-        TWService().fetchQuote(sourceCurrency: .BRL, targetCurrency: targetCurrency, amount: amount) { (quote) in
+    func fetchQuote(completion: @escaping (String?) -> ()) {
+        let settings = SettingsModel.restore()
+        numberFormatter.currencyCode = settings.targetCurrency.rawValue
+        
+        TWService().fetchQuote(sourceCurrency: settings.sourceCurrency, targetCurrency: settings.targetCurrency, amount: settings.amount) { (quote) in
             DispatchQueue.main.async {
                 guard let quote = quote else {
                     completion(nil)

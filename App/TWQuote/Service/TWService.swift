@@ -16,7 +16,7 @@ struct PaymentOption: Codable {
     let targetAmount: Decimal
 }
 
-enum TWCurrency: String {
+enum TWCurrency: String, CaseIterable {
     case BRL = "BRL"
     case EUR = "EUR"
     case USD = "USD"

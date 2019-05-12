@@ -13,6 +13,9 @@
 		31443320227CAAE80020F9C6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3144331E227CAAE80020F9C6 /* MainMenu.xib */; };
 		3144332C227CAAE80020F9C6 /* TWQuoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144332B227CAAE80020F9C6 /* TWQuoteTests.swift */; };
 		3164B230227CBA550008E2BA /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3164B22F227CBA550008E2BA /* Menu.swift */; };
+		31B4E3E7228714FA0080B1EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3E5228714FA0080B1EC /* SettingsViewController.swift */; };
+		31B4E3E8228714FA0080B1EC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B4E3E6228714FA0080B1EC /* SettingsViewController.xib */; };
+		31B4E3EA22871A410080B1EC /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4E3E922871A410080B1EC /* SettingsModel.swift */; };
 		31C4F2D82280B76A009BD15B /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4F2D72280B76A009BD15B /* MenuViewModel.swift */; };
 		31F31E55227DCA2200B0FF04 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F31E54227DCA2200B0FF04 /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +42,9 @@
 		3144332B227CAAE80020F9C6 /* TWQuoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWQuoteTests.swift; sourceTree = "<group>"; };
 		3144332D227CAAE80020F9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3164B22F227CBA550008E2BA /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		31B4E3E5228714FA0080B1EC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		31B4E3E6228714FA0080B1EC /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		31B4E3E922871A410080B1EC /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		31C4F2D72280B76A009BD15B /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		31F31E54227DCA2200B0FF04 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				31C4F2DA2280B8F8009BD15B /* AppDelegate */,
+				31B4E3E4228714CB0080B1EC /* Settings */,
 				31C4F2D92280B8EF009BD15B /* Menu */,
 				31C4F2DC2280B90C009BD15B /* Constants */,
 				31C4F2DB2280B902009BD15B /* Service */,
@@ -98,6 +105,16 @@
 				3144332D227CAAE80020F9C6 /* Info.plist */,
 			);
 			path = TWQuoteTests;
+			sourceTree = "<group>";
+		};
+		31B4E3E4228714CB0080B1EC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				31B4E3E5228714FA0080B1EC /* SettingsViewController.swift */,
+				31B4E3E922871A410080B1EC /* SettingsModel.swift */,
+				31B4E3E6228714FA0080B1EC /* SettingsViewController.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		31C4F2D92280B8EF009BD15B /* Menu */ = {
@@ -226,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3144331D227CAAE80020F9C6 /* Assets.xcassets in Resources */,
+				31B4E3E8228714FA0080B1EC /* SettingsViewController.xib in Resources */,
 				31443320227CAAE80020F9C6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +267,8 @@
 				3144331B227CAAE70020F9C6 /* AppDelegate.swift in Sources */,
 				31C4F2D82280B76A009BD15B /* MenuViewModel.swift in Sources */,
 				31F31E55227DCA2200B0FF04 /* Constants.swift in Sources */,
+				31B4E3EA22871A410080B1EC /* SettingsModel.swift in Sources */,
+				31B4E3E7228714FA0080B1EC /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

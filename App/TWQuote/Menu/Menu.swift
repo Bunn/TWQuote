@@ -25,6 +25,10 @@ class Menu {
         refreshMenuItem.target = self
         menu.addItem(refreshMenuItem)
 
+        let settingsMenuItem = NSMenuItem(title: UIConstants.strings.menuSettingsLabel, action: #selector(Menu.openSettings), keyEquivalent: "")
+        settingsMenuItem.target = self
+        menu.addItem(settingsMenuItem)
+
         let quitMenuItem = NSMenuItem(title: UIConstants.strings.menuQuitButton, action: #selector(Menu.quit), keyEquivalent: "")
         quitMenuItem.target = self
         menu.addItem(quitMenuItem)
@@ -54,7 +58,7 @@ class Menu {
     @objc private func updateData() {
         displaySpinner(display: true)
         
-        viewModel.fetchQuote(sourceCurrency: .BRL, targetCurrency: .EUR, amount: 1000) { (value) in
+        viewModel.fetchQuote { (value) in
             self.displaySpinner(display: false)
             if let value = value {
                 self.item.button?.title = value
@@ -67,11 +71,32 @@ class Menu {
     
     //MARK: - Button Methods
     
+    @objc private func openSettings() {
+        NSApp.activate(ignoringOtherApps: true)
+        let settings = SettingsViewController()
+        settings.delegate = self
+        if windowController == nil {
+            let window = NSWindow(contentViewController: settings)
+            windowController = NSWindowController(window: window)
+        }
+        windowController?.showWindow(self)
+        windowController?.window?.makeKey()
+    }
+    
     @objc private func refresh() {
         updateData()
     }
     
     @objc private func quit() {
         NSApplication.shared.terminate(self)
+    }
+}
+
+
+extension Menu: SettingsViewControllerDelegate {
+    
+    func didSave(controller: SettingsViewController) {
+        windowController?.close()
+        updateData()
     }
 }
