@@ -1,5 +1,5 @@
 # TWQuote
-Simple menu bar app that displays Transferwise's currency quote.
+Simple menu bar app that displays Transferwise's currency quote with an auto-refresh every 5 minutes.
 
 This is obviously not a polished product since I've made only for my personal use, but PR's are welcome :)
 
