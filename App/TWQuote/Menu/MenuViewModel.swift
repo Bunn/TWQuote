@@ -26,11 +26,11 @@ class MenuViewModel {
                     completion(nil)
                     return
                 }
-                guard let payment = quote.paymentOptions.first else {
+                guard let payment = quote.wiseQuote else {
                     completion (nil)
                     return
                 }
-                completion(self.numberFormatter.string(for: payment.targetAmount))
+                completion(self.numberFormatter.string(for: payment.receivedAmount))
             }
         }
     }

@@ -8,12 +8,25 @@
 
 import Foundation
 
-struct TWQuote: Codable {
-    let paymentOptions: [PaymentOption]
+struct TWResponse: Codable {
+    let providers: [Provider]
+    var wiseQuote: Quote? {
+        guard let wise = providers.filter({ $0.alias == "wise" }).first else { return nil }
+        return wise.quotes.first
+    }
 }
 
-struct PaymentOption: Codable {
-    let targetAmount: Decimal
+struct Provider: Codable {
+    let id: Int
+    let alias: String
+    let name: String
+    let quotes: [Quote]
+}
+
+struct Quote: Codable {
+    let rate: Decimal
+    let fee: Decimal
+    let receivedAmount: Decimal
 }
 
 enum TWCurrency: String, CaseIterable {
@@ -23,13 +36,10 @@ enum TWCurrency: String, CaseIterable {
     case GBP = "GBP"
 }
 
-
 struct TWService {
-    let authorizationHeaderValue = "dad99d7d8e52c2c8aaf9fda788d8acdc"
-    let authorizationHeaderKey = "X-Authorization-key"
-    let urlPah = "https://transferwise.com/api/v1/payment/legacyQuote"
-    
-    func fetchQuote(sourceCurrency: TWCurrency, targetCurrency: TWCurrency, amount: Int, completion: @escaping (TWQuote?) -> ()) {
+    let urlPah = "https://wise.com/gateway/v3/comparisons"
+
+    func fetchQuote(sourceCurrency: TWCurrency, targetCurrency: TWCurrency, amount: Int, completion: @escaping (TWResponse?) -> ()) {
         let sessionConfig = URLSessionConfiguration.default
         
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
@@ -39,13 +49,7 @@ struct TWService {
         }
         
         let URLParams = [
-            "amount": String(amount),
-            "amountCurrency": "source",
-            "getNoticeMessages": "true",
-            "hasDiscount": "false",
-            "isFixedRate": "false",
-            "isGuaranteedFixedTarget": "false",
-            "payInMethod": "REGULAR",
+            "sendAmount": String(amount),
             "sourceCurrency": sourceCurrency.rawValue,
             "targetCurrency": targetCurrency.rawValue,
         ]
@@ -53,16 +57,15 @@ struct TWService {
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
         
-        // Headers
-        request.addValue(authorizationHeaderValue, forHTTPHeaderField: authorizationHeaderKey)
+
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
                 if let data = data {
                     do {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        let quote = try decoder.decode(TWQuote.self, from: data)
-                        completion(quote);
+                        let twResponse = try decoder.decode(TWResponse.self, from: data)
+                        completion(twResponse)
                     } catch {
                         print("Error \(error)")
                         completion(nil)
